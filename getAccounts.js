@@ -4,7 +4,7 @@ const log = require('./promiseLogger')
 
 module.exports = (config) => () =>
   request(urlBuilder(config).SDHome)
-    .then(log("Got account details"))
+    .then(log('Got account details'))
     .then(response => {
       const accountContainers = response.$('.acct-overview-container').get()
 
