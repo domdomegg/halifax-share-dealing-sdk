@@ -1,0 +1,34 @@
+{
+  "name": "halifax-share-dealing-sdk",
+  "version": "1.0.0",
+  "description": "Unofficial SDK for Halifax Share Dealing, IWeb Share Dealing, Bank of Scotland Share Dealing and The Lloyds Bank Direct Investments Service",
+  "keywords": [
+    "halifax",
+    "iweb",
+    "bank of scotland",
+    "lloyds",
+    "share dealing",
+    "direct investments",
+    "sdk",
+    "api"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "author": "Adam Jones (domdomegg)",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
+  },
+  "devDependencies": {
+    "standard": "^13.1.0"
+  },
+  "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/domdomegg/halifax-share-dealing-sdk.git"
+  }
+}
