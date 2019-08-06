@@ -23,7 +23,23 @@ const sd = halifaxShareDealingSdk({
 })
 ```
 
+### Login
+
+This is required before making any other calls
+
+Returns an accounty object with the default account
+
+```js
+sd.login()
+    .then(console.dir)
+
+// { accountId: '000123456ABCD' }
+```
+
 ### Get accounts
+
+Lists all accounts
+Returns an array of accounty objects with account names and balances
 
 ```js
 sd.login()
@@ -44,6 +60,9 @@ sd.login()
 
 ### Get dividend options
 
+Returns the dividend options for all accounts
+Returns an array of accounty objects with divident option data
+
 ```js
 sd.login()
   .then(sd.getDividendOptions)
@@ -56,6 +75,43 @@ sd.login()
 //     dividendOptionCode: 'R',
 //     dividendOptionName: 'Automatic Dividend Reinvestment' } ]
 ```
+
+### Get statements
+
+Gets all the statements for an account
+
+Requires an accounty object to get the statements for
+Returns an array of accounty objects with statement data
+
+```js
+sd.login() // NB: Returns accounty object for default account
+  .then(sd.getStatements)
+  .then(console.dir)
+
+// [ { accountId: '000123456ABCD',
+//     statementId: '1',
+//     statementDate: '01 Jan 1970' },
+//   { accountId: '000123456ABCD',
+//     statementId: '2',
+//     statementDate: '02 Jan 1970' } ]
+```
+
+```js
+sd.login()
+  .then(sd.getAccounts)
+  .then(accounts => accounts.find(account => account.name == 'Share Dealing Account'))
+  .then(sd.getStatements)
+  .then(console.dir)
+
+// [ { accountId: '000123456',
+//     statementId: '1',
+//     statementDate: '01 Jan 1970' } ]
+```
+
+## Glossary
+
+- `accountId`: Equivalent to what I think Halifax call a `PortCode`. Usually the account code with potentially some letters after it. Accounts with different `accountId`s may share the same account code.
+- `accounty object`: An object with an `accountId` property
 
 ## Contributing
 
