@@ -13,7 +13,7 @@ module.exports = (config) => () =>
         const tds = response.$('td', accountContainerElem)
 
         return {
-          id: accountContainer.find('a').first().attr('onclick').split(/PortCode=|'\)/)[1],
+          accountId: accountContainer.find('a').first().attr('onclick').split(/PortCode=|'\)/)[1],
           name: accountContainer.find('a').first().text(),
           availableToInvest: tds.eq(0).text(),
           totalSecurities: tds.eq(1).text(),

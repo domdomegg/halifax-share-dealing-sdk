@@ -24,12 +24,12 @@ sd.login()
     .then(sd.getAccounts)
     .then(console.dir)
 
-// [ { id: '000123456',
+// [ { accountId: '000123456',
 //     name: 'Share Dealing Account',
 //     availableToInvest: '£1.23',
 //     totalSecurities: '£4.56',
 //     totalValue: '£5.79' },
-//   { id: '000123456ABCD',
+//   { accountId: '000123456ABCD',
 //     name: 'Stocks and Shares ISA',
 //     availableToInvest: '£1.23',
 //     totalSecurities: '£4.56',
