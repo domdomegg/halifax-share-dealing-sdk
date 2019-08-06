@@ -5,7 +5,7 @@ const log = require('../utils/promiseLogger')
 
 module.exports = (config) => () =>
   request(urlBuilder(config).generateSS('Stmnts'))
-    .then(response => urlBuilder(config).baseSDUrl + response.headers.location)
+    .then(response => urlBuilder(config).baseMainUrl + response.headers.location)
     .then(log('Got statement list URL'))
     .then(request)
     .then(log('Got statements'))

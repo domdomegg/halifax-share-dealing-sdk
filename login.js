@@ -40,7 +40,7 @@ module.exports = (config) => () =>
     .then(response => response.headers.location) // SDsetup URL
     .then(log('Got SDsetup URL'))
     .then(request)
-    .then(response => urlBuilder(config).baseSDApp + response.headers.location) // SDwelcomehome URL
+    .then(response => urlBuilder(config).baseSDUrl + response.headers.location) // SDwelcomehome URL
     .then(log('Got SDwelcomehome URL'))
     .then(request)
     .then(log('Successfully logged in'))

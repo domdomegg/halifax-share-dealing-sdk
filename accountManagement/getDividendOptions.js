@@ -10,7 +10,7 @@ const dividendOptionCodeToDividendOptionName = {
 }
 
 module.exports = (config) => () =>
-  request(urlBuilder(config).SDDividendOptions)
+  request(urlBuilder(config).generateSD('sddividendinstructions'))
     .then(log('Got dividend options'))
     .then(response => {
       const dividendOptionRadios = response.$('tbody tr input:checked').get()

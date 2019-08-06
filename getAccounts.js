@@ -3,7 +3,7 @@ const request = require('./utils/requestAgent')
 const log = require('./utils/promiseLogger')
 
 module.exports = (config) => () =>
-  request(urlBuilder(config).SDHome)
+  request(urlBuilder(config).generateSD('sdwelcomehome'))
     .then(log('Got account details'))
     .then(response => {
       const accountContainers = response.$('.acct-overview-container').get()
