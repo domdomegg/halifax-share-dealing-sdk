@@ -14,7 +14,7 @@ module.exports = (config) => {
   const SDHome = baseSDApp + 'sdwelcomehome.asp'
   const SDDividendOptions = baseSDApp + 'sddividendinstructions.asp'
   const baseSSUrl = 'https://share-dealing.' + baseUrl + '/SecureSite/'
-  const generateSS = (navTarget, accountId) => baseSSUrl + 'sdAccountManagementPortal.aspx?NavTarget=' + navTarget + '&PortCode=' + accountId
+  const generateSS = (navTarget, accountId) => baseSSUrl + 'sdAccountManagementPortal.aspx?NavTarget=' + navTarget + (accountId ? '&PortCode=' + accountId : '')
 
   return { baseUrl, baseLoginUrl, loginHxProcess, baseSDUrl, baseSDApp, SDHome, SDDividendOptions, generateSS }
 }
