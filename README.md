@@ -59,6 +59,20 @@ sd.login()
 //     totalValue: '£5.79' } ]
 ```
 
+### Get default account
+
+Gets the accountId for the default account from the 'set default account' page.
+
+Returns an accounty object with the default account
+
+```js
+sd.login()
+  .then(sd.getDefaultAccount)
+  .then(console.dir)
+
+// { accountId: '000123456ABCD' }
+```
+
 ### Get dividend options
 
 Returns the dividend options for all accounts
