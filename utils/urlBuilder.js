@@ -9,8 +9,8 @@ module.exports = (config) => {
   const baseUrl = BASE_URLS[config.site]
   const baseLoginUrl = 'https://www.' + baseUrl
   const loginHxProcess = baseLoginUrl + '/CustomerAuthentication/HxProcessLogin.aspx'
-  const baseSDUrl = 'https://share-dealing.' + baseUrl
-  const SDHome = baseSDUrl + '/Sharedealing/App/sdwelcomehome.asp'
+  const baseSDUrl = 'https://share-dealing.' + baseUrl + '/Sharedealing/App/'
+  const SDHome = baseSDUrl + 'sdwelcomehome.asp'
 
   return { baseUrl, baseLoginUrl, loginHxProcess, baseSDUrl, SDHome }
 }

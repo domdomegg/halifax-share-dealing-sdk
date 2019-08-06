@@ -1,6 +1,6 @@
-const urlBuilder = require('./urlBuilder')
-const request = require('./requestAgent')
-const log = require('./promiseLogger')
+const urlBuilder = require('./utils/urlBuilder')
+const request = require('./utils/requestAgent')
+const log = require('./utils/promiseLogger')
 
 module.exports = (config) => () =>
   request(urlBuilder(config).SDHome)
@@ -8,7 +8,7 @@ module.exports = (config) => () =>
     .then(response => {
       const accountContainers = response.$('.acct-overview-container').get()
 
-      return accountContainers.map((accountContainerElem) => {
+      return accountContainers.map(accountContainerElem => {
         const accountContainer = response.$(accountContainerElem)
         const tds = response.$('td', accountContainerElem)
 
