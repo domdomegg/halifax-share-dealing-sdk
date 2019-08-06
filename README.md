@@ -6,7 +6,9 @@ Scrapes internet banking, so may be broken by updates to their front end
 
 ## Usage
 
-```javascript
+### Setup
+
+```js
 const halifaxShareDealingSdk = require("halifax-share-dealing-sdk")
 const sd = halifaxShareDealingSdk({
     site: 'halifax', // one of 'halifax', 'iweb', 'bos', 'lloyds'
@@ -19,7 +21,11 @@ const sd = halifaxShareDealingSdk({
       'The name of your first school': 'Anyschool',
     }
 })
+```
 
+### Get accounts
+
+```js
 sd.login()
     .then(sd.getAccounts)
     .then(console.dir)
@@ -34,6 +40,21 @@ sd.login()
 //     availableToInvest: '£1.23',
 //     totalSecurities: '£4.56',
 //     totalValue: '£5.79' } ]
+```
+
+### Get dividend options
+
+```js
+sd.login()
+  .then(sd.getDividendOptions)
+  .then(console.dir)
+
+// [ { accountId: '000123456',
+//     dividendOptionCode: 'H',
+//     dividendOptionName: 'Hold In Account' },
+//   { accountId: '000123456ABCD',
+//     dividendOptionCode: 'R',
+//     dividendOptionName: 'Automatic Dividend Reinvestment' } ]
 ```
 
 ## Contributing

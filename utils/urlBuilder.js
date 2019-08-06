@@ -11,6 +11,7 @@ module.exports = (config) => {
   const loginHxProcess = baseLoginUrl + '/CustomerAuthentication/HxProcessLogin.aspx'
   const baseSDUrl = 'https://share-dealing.' + baseUrl + '/Sharedealing/App/'
   const SDHome = baseSDUrl + 'sdwelcomehome.asp'
+  const SDDividendOptions = baseSDUrl + 'sddividendinstructions.asp'
 
-  return { baseUrl, baseLoginUrl, loginHxProcess, baseSDUrl, SDHome }
+  return { baseUrl, baseLoginUrl, loginHxProcess, baseSDUrl, SDHome, SDDividendOptions }
 }
