@@ -73,6 +73,32 @@ sd.login()
 // { accountId: '000123456ABCD' }
 ```
 
+### Set default account
+
+Sets the default account
+
+Requires an accounty object for the account you want to set as default
+
+Returns an accounty object with the new default account
+
+```js
+sd.login()
+  .then(() => sd.setDefaultAccount({ accountId: '000123456' }))
+  .then(console.dir)
+
+// { accountId: '000123456' }
+```
+
+```js
+sd.login()
+  .then(sd.getAccounts)
+  .then(accounts => accounts.find(account => account.name == 'Share Dealing Account'))
+  .then(sd.setDefaultAccount)
+  .then(console.dir)
+
+// { accountId: '000123456' }
+```
+
 ### Get dividend options
 
 Returns the dividend options for all accounts
@@ -108,8 +134,8 @@ sd.login()
 
 ## Glossary
 
-- `accountId`: Equivalent to what I think Halifax call a `PortCode`. Usually the account code with potentially some letters after it. Accounts with different `accountId`s may share the same account code.
-- `statementId`: Statement id, I think it's an incrementing number starting at `1` - not unique across logins. Statements are attached to a login (as opposed to account).
+- `accountId`: Equivalent to what I think Halifax call a `PortCode`. Usually the account code with potentially some letters after it. Accounts with different `accountId`s may share the same account code. I think these are unique across logins.
+- `statementId`: Statement id, I think it's an incrementing number starting at `1` - not unique across logins. Statements are attached to a login (as opposed to account), and `statementId`s are unique within a login.
 - `accounty object`: An object with an `accountId` property
 
 ## Contributing
