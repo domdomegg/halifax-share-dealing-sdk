@@ -1,0 +1,11 @@
+language: node_js
+node_js: node
+git:
+  depth: 1
+jobs:
+  include:
+  - name: "Unit Tests"
+    script: npm test
+  - name: "Lint"
+    install: npm install standard
+    script: npm run lint
