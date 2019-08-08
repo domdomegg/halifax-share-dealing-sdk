@@ -1,6 +1,7 @@
 const urlBuilder = require('./utils/urlBuilder')
 const request = require('./utils/requestAgent')
 const log = require('./utils/promiseLogger')
+const monetaryValue = require('./utils/monetaryValue')
 
 module.exports = (config) => () =>
   request(urlBuilder(config).generateSD('sdwelcomehome'))
@@ -15,9 +16,9 @@ module.exports = (config) => () =>
         return {
           accountId: accountContainer.find('a').first().attr('onclick').split(/PortCode=|'\)/)[1],
           name: accountContainer.find('a').first().text(),
-          availableToInvest: tds.eq(0).text(),
-          totalSecurities: tds.eq(1).text(),
-          totalValue: tds.eq(2).text()
+          availableToInvest: monetaryValue(tds.eq(0).text()),
+          totalSecurities: monetaryValue(tds.eq(1).text()),
+          totalValue: monetaryValue(tds.eq(2).text())
         }
       })
     })

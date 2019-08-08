@@ -49,14 +49,14 @@ sd.login()
 
 // [ { accountId: '000123456',
 //     name: 'Share Dealing Account',
-//     availableToInvest: '£1.23',
-//     totalSecurities: '£4.56',
-//     totalValue: '£5.79' },
+//     availableToInvest: { asFloat: 1.23, asText: '£1.23' },
+//     totalSecurities: { asFloat: 4.56, asText: '£4.56' },
+//     totalValue: { asFloat: 5.79, asText: '£5.79' } },
 //   { accountId: '000123456ABCD',
 //     name: 'Stocks and Shares ISA',
-//     availableToInvest: '£1.23',
-//     totalSecurities: '£4.56',
-//     totalValue: '£5.79' } ]
+//     availableToInvest: { asFloat: 1.23, asText: '£1.23' },
+//     totalSecurities: { asFloat: 4.56, asText: '£4.56' },
+//     totalValue: { asFloat: 5.79, asText: '£5.79' } } ]
 ```
 
 ### Get default account
