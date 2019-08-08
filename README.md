@@ -1,5 +1,7 @@
 # halifax-share-dealing-sdk
 
+[![Build Status](https://img.shields.io/travis/com/domdomegg/halifax-share-dealing-sdk/master)](https://travis-ci.com/domdomegg/halifax-share-dealing-sdk) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/domdomegg/halifax-share-dealing-sdk/blob/master/LICENSE)
+
 Unofficial SDK for Halifax Share Dealing, IWeb Share Dealing, Bank of Scotland Share Dealing and The Lloyds Bank Direct Investments Service
 
 Scrapes internet banking, so may be broken by updates to their front end
