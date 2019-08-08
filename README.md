@@ -158,3 +158,7 @@ npm run test && npm run lint && ! grep --exclude=pre-commit -r '000123456' .
 ```
 
 Warning: It is still possible to commit your data if you stage it, delete it and then commit. Please be careful!
+
+### Releases
+
+Versions follow the [semantic versioning spec](https://semver.org/). Use `npm version <major | minor | patch>` to bump the version, then push. Ensure you have set follow tags option to true with `git config --global push.followTags true`. Travis will then pick it up and handle the actual publishing to the NPM registry.
