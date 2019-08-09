@@ -4,5 +4,6 @@ module.exports = (config) => ({
   getDefaultAccount: require('./accountManagement/getDefaultAccount')(config),
   setDefaultAccount: require('./accountManagement/setDefaultAccount')(config),
   getDividendOptions: require('./accountManagement/getDividendOptions')(config),
-  getStatements: require('./valuationAndStatements/getStatements')(config)
+  getStatements: require('./valuationAndStatements/getStatements')(config),
+  getValuation: require('./valuationAndStatements/getValuation')(config)
 })
