@@ -11,16 +11,16 @@ Scrapes internet banking, so may be broken by updates to their front end
 ### Setup
 
 ```js
-const halifaxShareDealingSdk = require("halifax-share-dealing-sdk")
+const halifaxShareDealingSdk = require('halifax-share-dealing-sdk')
 const sd = halifaxShareDealingSdk({
   site: 'halifax', // one of 'halifax', 'iweb', 'bos', 'lloyds'
   USERNAME: 'username',
   PASSWORD: 'password',
   MEMORABLE_INFORMATION: {
-    'Your place/town of birth': 'Anytown',
     "Your mother's FIRST name": 'Jane',
     "Your father's FIRST name": 'John',
-    'The name of your first school': 'Anyschool',
+    'Your place/town of birth': 'Anytown',
+    'The name of your first school': 'Anyschool'
   }
 })
 ```
