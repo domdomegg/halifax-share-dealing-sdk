@@ -23,9 +23,25 @@ module.exports = (config) => ({ accountId }) =>
         }
       }))
 
+      const cash = nP(response.$('.account-header tr td').eq(3).text())
+      const totalSecurities = nP(response.$('[headers="val total"]').eq(0).text())
+
+      const totalSecuritiesFromStocks = stocks.reduce((acc, cur) => acc + cur.valuation.asFloat, 0)
+      if (Math.abs(totalSecurities.asFloat - totalSecuritiesFromStocks) > 0.01) {
+        console.warn('Total securities figure and sum of stocks don\'t add up')
+      }
+
+      const totalValue = {
+        asFloat: totalSecurities.asFloat + cash.asFloat,
+        asText: '£' + (totalSecurities.asFloat + cash.asFloat).toString()
+      }
+
       return {
         accountId,
-        stocks: stocks,
-        cash: nP(response.$('.account-header tr td').eq(3).text())
+        stocks,
+        cash,
+        availableToInvest: cash,
+        totalSecurities,
+        totalValue
       }
     })

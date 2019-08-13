@@ -160,7 +160,10 @@ sd.login()
 //        change:
 //         { absolute: { asFloat: 6, asText: '£6.00', asRawText: '£6.00' },
 //           percentage: { asFloat: 0.1212, asText: '12.12%', asRawText: '12.12%' } } } ],
-//   cash: { asFloat: 1000, asText: '£1000.00', asRawText: '£ 1,000.00' } }
+//   cash: { asFloat: 1000, asText: '£1000.00', asRawText: '£ 1,000.00' },
+//   availableToInvest: { asFloat: 1000, asText: '£1000.00', asRawText: '£ 1,000.00' },
+//   totalSecurities: { asFloat: 55.5, asText: '£55.50', asRawText: '£ 55.50' },
+//   totalValue: { asFloat: 1055.5, asText: '£1055.50' } }
 ```
 
 ## Glossary
