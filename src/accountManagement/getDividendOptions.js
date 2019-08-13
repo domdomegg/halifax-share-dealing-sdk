@@ -2,12 +2,7 @@ const urlBuilder = require('../utils/urlBuilder')
 const request = require('../utils/requestAgent')
 const log = require('../utils/promiseLogger')
 
-const dividendOptionCodeToDividendOptionName = {
-  R: 'Automatic Dividend Reinvestment',
-  H: 'Hold In Account',
-  P: 'Pay Away Immediately',
-  P6: 'Pay Away 6-Monthly'
-}
+const dividendOptionCodeToDividendOptionName = require('./dividendOptionCodeToDividendOptionName')
 
 module.exports = (config) => () =>
   request(urlBuilder(config).generateSD('sddividendinstructions'))

@@ -105,7 +105,7 @@ sd.login()
 
 Returns the dividend options for all accounts
 
-Returns an array of accounty objects with divident option data
+Returns an array of accounty objects with dividend option data
 
 ```js
 sd.login()
@@ -118,6 +118,33 @@ sd.login()
 //   { accountId: '000123456ABCD',
 //     dividendOptionCode: 'R',
 //     dividendOptionName: 'Automatic Dividend Reinvestment' } ]
+```
+
+### Set dividend options
+
+Sets the dividend options for all accounts
+
+Requires an array of accounty objects with `dividendOptionCode`s. Only requires the data for the accounts you want changed. `dividendOptionName`s are optional, but if provided the request will fail if the `dividendOptionCode`s and `dividendOptionName`s do not match. `accountId`s must be unique in the input array.
+
+Returns an array of accounty objects with the updated dividend option data
+
+```js
+sd.login()
+  .then(() => [
+      {
+        accountId: '000123456ABCD',
+        dividendOptionCode: 'P6'
+      }
+    ])
+  .then(sd.setDividendOptions)
+  .then(console.dir)
+
+// [ { accountId: '000123456',
+//     dividendOptionCode: 'H',
+//     dividendOptionName: 'Hold In Account' },
+//   { accountId: '000123456ABCD',
+//     dividendOptionCode: 'P6',
+//     dividendOptionName: 'Pay Away 6-Monthly' } ]
 ```
 
 ### Get statements
