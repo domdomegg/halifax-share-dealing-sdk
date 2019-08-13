@@ -3,12 +3,14 @@ node_js: node
 jobs:
   include:
   - stage: test
-    name: "Unit Tests"
+    name: "Jest"
     script: npm test
   - name: "Lint"
     install: npm install standard
     script: npm run lint
   - stage: deploy
+    name: "Deploy"
+    if: tag IS present
     script: skip
     deploy:
       provider: npm
