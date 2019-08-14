@@ -3,18 +3,15 @@ const request = require('./utils/requestAgent')
 const log = require('./utils/promiseLogger')
 
 module.exports = (config) => () =>
-  request({
-    url: urlBuilder(config).loginHxProcess,
-    form: {
+  request(urlBuilder(config).loginHxProcess)
+    .type('form')
+    .send({
       Username: config.USERNAME,
       password: config.PASSWORD
-    } })
-    .then(response => urlBuilder(config).baseLoginUrl + response.headers.location)
-    .then(log('Got memorable information question URL using username and password'))
-    .then(request)
-    .then(response => {
-      const memorableInformationPrompt = response.$('#ctl00_MainPageContent_answer__LabelID').text()
-      const viewstate = response.$('#__VIEWSTATE').val()
+    })
+    .then(({ body: { $ }, redirects }) => {
+      const memorableInformationPrompt = $('#ctl00_MainPageContent_answer__LabelID').text()
+      const viewstate = $('#__VIEWSTATE').val()
 
       if (!Object.prototype.hasOwnProperty.call(config.MEMORABLE_INFORMATION, memorableInformationPrompt)) {
         throw new Error('Config did not have answer for prompt: ' + memorableInformationPrompt)
@@ -24,24 +21,13 @@ module.exports = (config) => () =>
 
       const answer = config.MEMORABLE_INFORMATION[memorableInformationPrompt]
 
-      return {
-        url: response.request.uri.href,
-        form: {
+      return request(redirects[0])
+        .type('form')
+        .send({
           __VIEWSTATE: viewstate,
           ctl00$MainPageContent$answer$TextBox: answer,
           ctl00$MainPageContent$_signin: 'Sign In'
-        }
-      }
+        })
     })
-    .then(request)
-    .then(response => urlBuilder(config).baseLoginUrl + response.headers.location) // processLoginEpilogue URL
-    .then(log('Got process login epilogue URL using memorable information'))
-    .then(request)
-    .then(response => response.headers.location) // SDsetup URL
-    .then(log('Got SDsetup URL'))
-    .then(request)
-    .then(response => urlBuilder(config).baseSDUrl + response.headers.location) // SDwelcomehome URL
-    .then(log('Got SDwelcomehome URL'))
-    .then(request)
     .then(log('Successfully logged in'))
-    .then(response => ({ accountId: response.request.uri.href.split('?Portcode=')[1] }))
+    .then(({ req: { path } }) => ({ accountId: path.split('?Portcode=')[1] }))

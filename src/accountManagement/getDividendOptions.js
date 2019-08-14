@@ -7,8 +7,8 @@ const dividendOptionCodeToDividendOptionName = require('./dividendOptionCodeToDi
 module.exports = (config) => () =>
   request(urlBuilder(config).generateSD('sddividendinstructions'))
     .then(log('Got dividend options'))
-    .then(response => {
-      const dividendOptionRadios = response.$('tbody tr input:checked').get()
+    .then(({ body: { $ } }) => {
+      const dividendOptionRadios = $('tbody tr input:checked').get()
 
       return dividendOptionRadios.map(dividendOptionRadio => ({
         accountId: dividendOptionRadio.attribs.name.split('radio')[1],

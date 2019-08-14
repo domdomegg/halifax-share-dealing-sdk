@@ -8,13 +8,12 @@ const dividendOptionCodeToDividendOptionName = require('./dividendOptionCodeToDi
 module.exports = (config) => (dividendOptions) =>
   request(urlBuilder(config).generateSD('sddividendinstructions'))
     .then(log('Got dividend options'))
-    .then(response => request({
-      url: urlBuilder(config).generateSD('sddividendinstructionsverify'),
-      form: {
+    .then(({ body: { $ } }) => request(urlBuilder(config).generateSD('sddividendinstructionsverify'))
+      .type('form')
+      .send({
         ...formDataFrom(dividendOptions),
-        HxUniqueID: response.$('input[name="HxUniqueID"]').val()
-      }
-    }))
+        HxUniqueID: $('input[name="HxUniqueID"]').val()
+      }))
     .then(log('Set dividend options'))
     .then(getDividendOptions(config))
 

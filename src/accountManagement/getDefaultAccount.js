@@ -5,8 +5,8 @@ const log = require('../utils/promiseLogger')
 module.exports = (config) => () =>
   request(urlBuilder(config).generateSD('sddefaultaccount'))
     .then(log('Got default account'))
-    .then(response => {
-      const defaultAccountRadio = response.$('input:checked')
+    .then(({ body: { $ } }) => {
+      const defaultAccountRadio = $('input:checked')
 
       return {
         accountId: defaultAccountRadio.val()

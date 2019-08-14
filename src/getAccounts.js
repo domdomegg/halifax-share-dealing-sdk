@@ -6,12 +6,12 @@ const nP = require('./utils/numberParser')
 module.exports = (config) => () =>
   request(urlBuilder(config).generateSD('sdwelcomehome'))
     .then(log('Got account details'))
-    .then(response => {
-      const accountContainers = response.$('.acct-overview-container').get()
+    .then(({ body: { $ } }) => {
+      const accountContainers = $('.acct-overview-container').get()
 
       return accountContainers.map(accountContainerElem => {
-        const accountContainer = response.$(accountContainerElem)
-        const tds = response.$('td', accountContainerElem)
+        const accountContainer = $(accountContainerElem)
+        const tds = $('td', accountContainerElem)
 
         return {
           accountId: accountContainer.find('a').first().attr('onclick').split(/PortCode=|'\)/)[1],
