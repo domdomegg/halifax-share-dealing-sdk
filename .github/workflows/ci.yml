@@ -4,16 +4,12 @@ on: [push]
 
 jobs:
   ci:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [8, 10, 12]
-
     env:
       CI: true
-
     steps:
     - name: Checkout ${{ github.sha }}
       uses: actions/checkout@v1
