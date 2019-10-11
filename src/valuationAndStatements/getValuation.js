@@ -31,10 +31,11 @@ module.exports = (config) => ({ accountId }) =>
         console.warn('Total securities figure and sum of stocks don\'t add up')
       }
 
-      const totalValue = {
-        asFloat: totalSecurities.asFloat + cash.asFloat,
-        asText: '£' + (totalSecurities.asFloat + cash.asFloat).toString()
-      }
+      const nPTotalValue = nP(
+        '£' + parseFloat(
+          Math.round(100 * (
+            totalSecurities.asFloat + cash.asFloat
+          )) / 100).toString())
 
       return {
         accountId,
@@ -42,6 +43,9 @@ module.exports = (config) => ({ accountId }) =>
         cash,
         availableToInvest: cash,
         totalSecurities,
-        totalValue
+        totalValue: {
+          asFloat: nPTotalValue.asFloat,
+          asText: nPTotalValue.asText
+        }
       }
     })
