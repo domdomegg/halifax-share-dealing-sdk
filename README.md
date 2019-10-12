@@ -1,6 +1,11 @@
 # halifax-share-dealing-sdk
 
-[![Build Status](https://img.shields.io/travis/com/domdomegg/halifax-share-dealing-sdk/master)](https://travis-ci.com/domdomegg/halifax-share-dealing-sdk) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/domdomegg/halifax-share-dealing-sdk/blob/master/LICENSE) [![NPM Package Version](https://img.shields.io/npm/v/halifax-share-dealing-sdk)](https://www.npmjs.com/package/halifax-share-dealing-sdk)  [![Bundle size](https://img.shields.io/bundlephobia/minzip/halifax-share-dealing-sdk?label=size)](https://bundlephobia.com/result?p=halifax-share-dealing-sdk@latest)
+[![CI Status](https://github.com/domdomegg/halifax-share-dealing-sdk/workflows/CI/badge.svg)](https://github.com/domdomegg/halifax-share-dealing-sdk/actions?workflow=CI)
+[![CD Status](https://github.com/domdomegg/halifax-share-dealing-sdk/workflows/CD/badge.svg)](https://github.com/domdomegg/halifax-share-dealing-sdk/actions?workflow=CD)
+[![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/domdomegg/halifax-share-dealing-sdk/blob/master/LICENSE)
+[![NPM Package Version](https://img.shields.io/npm/v/halifax-share-dealing-sdk)](https://www.npmjs.com/package/halifax-share-dealing-sdk) 
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/halifax-share-dealing-sdk?label=size)](https://bundlephobia.com/result?p=halifax-share-dealing-sdk@latest)
 
 Unofficial SDK for Halifax Share Dealing, IWeb Share Dealing, Bank of Scotland Share Dealing and The Lloyds Bank Direct Investments Service
 
@@ -220,4 +225,4 @@ Warning: It is still possible to commit your data if you stage it, delete it and
 
 ### Releases
 
-Versions follow the [semantic versioning spec](https://semver.org/). Use `npm version <major | minor | patch>` to bump the version, then push. Ensure you have set follow tags option to true with `git config --global push.followTags true`. Travis will then pick it up and handle the actual publishing to the NPM registry.
+Versions follow the [semantic versioning spec](https://semver.org/). Use `npm version <major | minor | patch>` to bump the version, then push. Ensure you have set follow tags option to true with `git config --global push.followTags true`. GitHub actions will then pick it up and handle the actual publishing to the NPM registry.
