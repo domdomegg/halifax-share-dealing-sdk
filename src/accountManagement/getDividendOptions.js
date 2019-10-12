@@ -2,7 +2,7 @@ const urlBuilder = require('../utils/urlBuilder')
 const request = require('../utils/requestAgent')
 const log = require('../utils/promiseLogger')
 
-const dividendOptionCodeToDividendOptionName = require('./dividendOptionCodeToDividendOptionName')
+const dividendOptionCodeToDividendOptionName = require('../utils/dividendOptionMap').fromCode
 
 module.exports = (config) => () =>
   request(urlBuilder(config).generateSD('sddividendinstructions'))

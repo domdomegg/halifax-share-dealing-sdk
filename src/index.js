@@ -6,5 +6,6 @@ module.exports = (config) => ({
   getDividendOptions: require('./accountManagement/getDividendOptions')(config),
   setDividendOptions: require('./accountManagement/setDividendOptions')(config),
   getStatements: require('./valuationAndStatements/getStatements')(config),
-  getValuation: require('./valuationAndStatements/getValuation')(config)
+  getValuation: require('./valuationAndStatements/getValuation')(config),
+  getDividendHistory: require('./valuationAndStatements/getDividendHistory')(config)
 })

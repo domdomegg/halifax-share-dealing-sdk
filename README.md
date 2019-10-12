@@ -198,6 +198,31 @@ sd.login()
 //   totalValue: { asFloat: 1055.5, asText: '£1055.50' } }
 ```
 
+### Get dividend history
+
+Gets dividend history for an account
+
+Requires an accounty object for the account you wish to get the dividend history for
+
+Returns an array of historical dividends relating to the account
+
+
+```js
+sd.login()
+  .then(sd.getDividendHistory)
+  .then(console.dir)
+
+// [ { issueDate: '09 Oct 2019',
+//     fullName: 'VANGUARD FUNDS PLC FTSE 250 UCITS ETF GBP DIS',
+//     exDividendDate: '26 Sep 2019',
+//     sharesHeldOnExDividendDate: { asFloat: 1, asText: '1', asRawText: '1' },
+//     amountPayable: { asFloat: 0.26, asText: '£0.26', asRawText: '£0.26' },
+//     handlingOperation:
+//      { dividendOptionCode: 'Hold In Account',
+//        dividendOptionName: 'H' },
+//     cashRef: 'ABCDXYZ123' } ]
+```
+
 ## Glossary
 
 - `accountId`: Equivalent to what I think Halifax call a `PortCode`. Usually the account code with potentially some letters after it. Accounts with different `accountId`s may share the same account code. I think these are unique across logins.
