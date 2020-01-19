@@ -12,7 +12,7 @@ it('processes £100.01 correctly', () => {
 })
 
 it('processes £1,000.00 correctly', () => {
-  expect(nP('£1000.00').asFloat).toBe(1000)
+  expect(nP('£1,000.00').asFloat).toBe(1000)
 })
 
 it('processes £1,000,000.00 correctly', () => {
