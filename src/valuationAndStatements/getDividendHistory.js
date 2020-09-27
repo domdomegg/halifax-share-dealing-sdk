@@ -21,6 +21,6 @@ module.exports = (config) => ({ accountId }) =>
           dividendOptionCode: $('td', row).eq(5).text(),
           dividendOptionName: dividendOptionNameToDividendOptionCode[$('td', row).eq(5).text()]
         },
-        cashRef: $('a', row).get(0).attribs['href'].split('cashref=')[1].split('&')[0]
+        cashRef: $('a', row).get(0).attribs.href.split('cashref=')[1].split('&')[0]
       }))
     })
