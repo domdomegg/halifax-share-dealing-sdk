@@ -20,5 +20,5 @@ module.exports = valueAsText => {
   }
 }
 
-const validParsedText = str => /^\d+(\.\d+)?$/.test(str)
+const validParsedText = str => /^-?\d+(\.\d+)?$/.test(str)
 const divide100 = str => (parseFloat(str) / 100).toFixed((str.split('.')[1] || '').length + 2)
