@@ -15,6 +15,14 @@ it('processes £1,000.00 correctly', () => {
   expect(nP('£1,000.00').asFloat).toBe(1000)
 })
 
+it('processes £-1,000.00 correctly', () => {
+  expect(nP('£-1,000.00').asFloat).toBe(-1000)
+})
+
+it('processes -£1,000.00 correctly', () => {
+  expect(nP('-£1,000.00').asFloat).toBe(-1000)
+})
+
 it('processes £1,000,000.00 correctly', () => {
   expect(nP('£1,000,000.00').asFloat).toBe(1000000)
 })
@@ -29,6 +37,10 @@ it('processes £1,234,567.89 correctly', () => {
 
 it('processes £0.00 correctly', () => {
   expect(nP('£0.00').asFloat).toBe(0)
+})
+
+it('processes £-0.00 correctly', () => {
+  expect(nP('£-0.00').asFloat).toBe(-0)
 })
 
 it('processes £0 correctly', () => {
@@ -79,6 +91,10 @@ it('processes 1,000,000.00p correctly', () => {
 
 it('processes 1,234.56p correctly', () => {
   expect(nP('1,234.56p').asFloat).toBe(12.3456)
+})
+
+it('processes -1,234.56p correctly', () => {
+  expect(nP('-1,234.56p').asFloat).toBe(-12.3456)
 })
 
 it('processes 1,234,567.89p correctly', () => {
@@ -166,6 +182,10 @@ it('processes 10% correctly', () => {
   expect(nP('10%').asFloat).toBe(0.1)
 })
 
+it('processes -10% correctly', () => {
+  expect(nP('-10%').asFloat).toBe(-0.1)
+})
+
 it('handles extra whitespace in 100.00% correctly', () => {
   expect(nP('100   . 00 %').asFloat).toBe(1)
   expect(nP('100   . 00 %').asText).toBe('100.00%')
@@ -196,6 +216,10 @@ it('processes 100.01 correctly', () => {
 
 it('processes 1,000.00 correctly', () => {
   expect(nP('1000.00').asFloat).toBe(1000)
+})
+
+it('processes -1,000.00 correctly', () => {
+  expect(nP('-1000.00').asFloat).toBe(-1000)
 })
 
 it('processes 1,000,000.00 correctly', () => {
