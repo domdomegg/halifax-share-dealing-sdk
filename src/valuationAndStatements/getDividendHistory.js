@@ -6,7 +6,7 @@ const nP = require('../utils/numberParser')
 const dividendOptionNameToDividendOptionCode = require('../utils/dividendOptionMap').fromName
 
 module.exports = (config) => ({ accountId }) =>
-  request(urlBuilder(config).generateSD('sdaccountdividendstatement', accountId))
+  request(urlBuilder(config).generateSD('sdaccountdividendstatement', accountId) + '&ChosenStartMonth=1&ChosenStartYear=2005&ChosenEndMonth=12&ChosenEndYear=3000')
     .then(log('Got dividend history'))
     .then(({ body: { $ } }) => {
       const dividendHistoryRows = $('.table-responsive tbody tr').get()
