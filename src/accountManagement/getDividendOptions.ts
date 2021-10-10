@@ -1,10 +1,11 @@
-const urlBuilder = require('../utils/urlBuilder')
-const request = require('../utils/requestAgent')
-const log = require('../utils/promiseLogger')
+import urlBuilder from '../utils/urlBuilder'
+import request from '../utils/requestAgent'
+import log from '../utils/promiseLogger'
+import { Config, DividendOption } from '../types'
 
 const dividendOptionCodeToDividendOptionName = require('../utils/dividendOptionMap').fromCode
 
-module.exports = (config) => () =>
+export default (config: Config) => (): Promise<DividendOption[]> =>
   request(urlBuilder(config).generateSD('sddividendinstructions'))
     .then(log('Got dividend options'))
     .then(({ body: { $ } }) => {

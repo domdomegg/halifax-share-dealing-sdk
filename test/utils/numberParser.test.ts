@@ -1,4 +1,4 @@
-const nP = require('../../src/utils/numberParser')
+import nP from '../../src/utils/numberParser'
 
 // Pounds (£)
 

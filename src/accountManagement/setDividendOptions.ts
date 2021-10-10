@@ -1,11 +1,11 @@
-const urlBuilder = require('../utils/urlBuilder')
-const request = require('../utils/requestAgent')
-const log = require('../utils/promiseLogger')
+import urlBuilder from '../utils/urlBuilder'
+import request from '../utils/requestAgent'
+import log from '../utils/promiseLogger'
+import { Config, DividendOption } from "../types"
+import getDividendOptions from './getDividendOptions'
+import { fromCode as dividendOptionCodeToDividendOptionName } from '../utils/dividendOptionMap'
 
-const getDividendOptions = require('./getDividendOptions')
-const dividendOptionCodeToDividendOptionName = require('../utils/dividendOptionMap').fromCode
-
-module.exports = (config) => (dividendOptions) =>
+export default (config: Config) => (dividendOptions: DividendOption[]): Promise<DividendOption[]> =>
   request(urlBuilder(config).generateSD('sddividendinstructions'))
     .then(log('Got dividend options'))
     .then(({ body: { $ } }) => request(urlBuilder(config).generateSD('sddividendinstructionsverify'))
@@ -17,8 +17,8 @@ module.exports = (config) => (dividendOptions) =>
     .then(log('Set dividend options'))
     .then(getDividendOptions(config))
 
-const formDataFrom = dividendOptions =>
-  dividendOptions.reduce((formData, { accountId, dividendOptionCode, dividendOptionName }) => {
+const formDataFrom = (dividendOptions: DividendOption[]) =>
+  dividendOptions.reduce<Record<string, string>>((formData, { accountId, dividendOptionCode, dividendOptionName }: DividendOption) => {
     if (!Object.keys(dividendOptionCodeToDividendOptionName).includes(dividendOptionCode)) {
       throw new Error(`Invalid dividend option code '${dividendOptionCode}'`)
     }

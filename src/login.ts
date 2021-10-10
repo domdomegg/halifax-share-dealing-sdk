@@ -1,8 +1,9 @@
-const urlBuilder = require('./utils/urlBuilder')
-const request = require('./utils/requestAgent')
-const log = require('./utils/promiseLogger')
+import urlBuilder from './utils/urlBuilder'
+import request from './utils/requestAgent'
+import log from './utils/promiseLogger'
+import { Accounty, Config } from './types'
 
-module.exports = (config) => () =>
+export default (config: Config) => (): Promise<Accounty> =>
   request(urlBuilder(config).loginHxProcess)
     .type('form')
     .send({
@@ -10,10 +11,10 @@ module.exports = (config) => () =>
       password: config.PASSWORD
     })
     .then(({ body: { $ }, redirects }) => {
-      const memorableInformationPrompt = $('#ctl00_MainPageContent_answer__LabelID').text()
-      const viewstate = $('#__VIEWSTATE').val()
+      const memorableInformationPrompt: keyof Config['MEMORABLE_INFORMATION'] = $('#ctl00_MainPageContent_answer__LabelID').text()
+      const viewstate: string = $('#__VIEWSTATE').val()
 
-      if (!Object.prototype.hasOwnProperty.call(config.MEMORABLE_INFORMATION, memorableInformationPrompt)) {
+      if (!(memorableInformationPrompt in config.MEMORABLE_INFORMATION)) {
         throw new Error('Config did not have answer for prompt: ' + memorableInformationPrompt)
       }
 
@@ -30,4 +31,5 @@ module.exports = (config) => () =>
         })
     })
     .then(log('Successfully logged in'))
+    // @ts-ignore - superagent v5 is missing TS definitions
     .then(({ req: { path } }) => ({ accountId: path.split('?Portcode=')[1] }))

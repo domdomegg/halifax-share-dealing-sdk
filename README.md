@@ -16,7 +16,10 @@ Scrapes internet banking, so may be broken by updates to their front end
 ### Setup
 
 ```js
-const halifaxShareDealingSdk = require('halifax-share-dealing-sdk')
+import halifaxShareDealingSdk from 'halifax-share-dealing-sdk'
+// Alternatively:
+// const halifaxShareDealingSdk = require('halifax-share-dealing-sdk').default
+
 const sd = halifaxShareDealingSdk({
   site: 'halifax', // one of 'halifax', 'iweb', 'bos', 'lloyds'
   USERNAME: 'username',
