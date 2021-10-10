@@ -1,6 +1,6 @@
 {
   "name": "halifax-share-dealing-sdk",
-  "version": "1.5.7",
+  "version": "2.0.1",
   "description": "Unofficial SDK for Halifax Share Dealing, IWeb Share Dealing, Bank of Scotland Share Dealing and The Lloyds Bank Direct Investments Service",
   "keywords": [
     "halifax",
