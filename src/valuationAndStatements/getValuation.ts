@@ -1,17 +1,18 @@
-const urlBuilder = require('../utils/urlBuilder')
-const request = require('../utils/requestAgent')
-const log = require('../utils/promiseLogger')
-const nP = require('../utils/numberParser')
+import urlBuilder from '../utils/urlBuilder'
+import request from '../utils/requestAgent'
+import log from '../utils/promiseLogger'
+import nP from '../utils/numberParser'
+import { Accounty, Config, Stock, Valuation } from '../types'
 
-module.exports = (config) => ({ accountId }) =>
+export default (config: Config) => ({ accountId }: Accounty): Promise<Valuation> =>
   request(urlBuilder(config).generateSD('sdaccountvaluation', accountId))
     .then(log('Got valuation'))
     .then(({ body: { $ } }) => {
       const valuationRows = $('#sortable tbody tr').get()
 
-      const stocks = valuationRows.map(valuationRow => ({
+      const stocks: Stock[] = valuationRows.map(valuationRow => ({
         TIDM: $('td strong', valuationRow).eq(0).text(),
-        fullName: $('td div', valuationRow).eq(0).attr('title'),
+        fullName: $('td div', valuationRow).eq(0).attr('title')!,
         holding: nP($('td', valuationRow).eq(1).text()),
         avgCostPerShare: nP($('td', valuationRow).eq(2).text()),
         bookCost: nP($('td', valuationRow).eq(3).text()),
@@ -31,11 +32,7 @@ module.exports = (config) => ({ accountId }) =>
         console.warn('Total securities figure and sum of stocks don\'t add up')
       }
 
-      const nPTotalValue = nP(
-        '£' + parseFloat(
-          Math.round(100 * (
-            totalSecurities.asFloat + cash.asFloat
-          )) / 100).toString())
+      const nPTotalValue = nP('£' + (Math.round(100 * (totalSecurities.asFloat + cash.asFloat)) / 100).toFixed(2))
 
       return {
         accountId,

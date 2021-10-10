@@ -1,8 +1,9 @@
-const urlBuilder = require('../utils/urlBuilder')
-const request = require('../utils/requestAgent')
-const log = require('../utils/promiseLogger')
+import urlBuilder from '../utils/urlBuilder'
+import request from '../utils/requestAgent'
+import log from '../utils/promiseLogger'
+import { Accounty, Config } from '../types'
 
-module.exports = (config) => () =>
+export default (config: Config) => (): Promise<Accounty> =>
   request(urlBuilder(config).generateSD('sddefaultaccount'))
     .then(log('Got default account'))
     .then(({ body: { $ } }) => {

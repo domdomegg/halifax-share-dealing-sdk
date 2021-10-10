@@ -1,10 +1,10 @@
-const urlBuilder = require('../utils/urlBuilder')
-const request = require('../utils/requestAgent')
-const log = require('../utils/promiseLogger')
+import urlBuilder from '../utils/urlBuilder'
+import request from '../utils/requestAgent'
+import log from '../utils/promiseLogger'
+import getDefaultAccount from './getDefaultAccount'
+import { Accounty, Config } from '../types'
 
-const getDefaultAccount = require('./getDefaultAccount')
-
-module.exports = (config) => ({ accountId }) =>
+export default (config: Config) => ({ accountId }: Accounty): Promise<Accounty> =>
   request(urlBuilder(config).generateSD('sddefaultaccount'))
     .then(log('Got default account'))
     .then(({ body: { $ } }) => request(urlBuilder(config).generateSD('sddefaultaccountverify'))

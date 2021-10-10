@@ -1,4 +1,6 @@
-module.exports = valueAsText => {
+import { ParsedNumber } from "../types"
+
+export default (valueAsText: string): ParsedNumber => {
   const parsedText = valueAsText.replace(/[*,\s]/g, '').replace(/[£p%]/, '')
 
   if (!validParsedText(parsedText)) {
@@ -20,5 +22,5 @@ module.exports = valueAsText => {
   }
 }
 
-const validParsedText = str => /^-?\d+(\.\d+)?$/.test(str)
-const divide100 = str => (parseFloat(str) / 100).toFixed((str.split('.')[1] || '').length + 2)
+const validParsedText = (str: string): boolean => /^-?\d+(\.\d+)?$/.test(str)
+const divide100 = (str: string): string => (parseFloat(str) / 100).toFixed((str.split('.')[1] || '').length + 2)

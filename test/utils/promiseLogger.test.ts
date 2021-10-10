@@ -1,13 +1,13 @@
-const log = require('../../src/utils/promiseLogger')
+import log from '../../src/utils/promiseLogger'
 
-const mocks = {}
+const mocks: any = {}
 
 beforeEach(() => {
   mocks['console.info'] = jest.spyOn(console, 'info').mockImplementation()
 })
 
 afterEach(() => {
-  mocks['console.info'].mockRestore()
+  mocks['console.info']!.mockRestore()
 })
 
 it('calls console.info', () => {

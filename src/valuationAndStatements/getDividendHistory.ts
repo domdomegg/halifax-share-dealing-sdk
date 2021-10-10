@@ -1,11 +1,11 @@
-const urlBuilder = require('../utils/urlBuilder')
-const request = require('../utils/requestAgent')
-const log = require('../utils/promiseLogger')
-const nP = require('../utils/numberParser')
+import urlBuilder from '../utils/urlBuilder'
+import request from '../utils/requestAgent'
+import log from '../utils/promiseLogger'
+import nP from '../utils/numberParser'
+import { fromName as dividendOptionNameToDividendOptionCode } from '../utils/dividendOptionMap'
+import { Accounty, Config, Dividend, DividendOption } from '../types'
 
-const dividendOptionNameToDividendOptionCode = require('../utils/dividendOptionMap').fromName
-
-module.exports = (config) => ({ accountId }) =>
+export default (config: Config) => ({ accountId }: Accounty): Promise<Dividend[]> =>
   request(urlBuilder(config).generateSD('sdaccountdividendstatement', accountId) + '&ChosenStartMonth=1&ChosenStartYear=2005&ChosenEndMonth=12&ChosenEndYear=3000')
     .then(log('Got dividend history'))
     .then(({ body: { $ } }) => {
@@ -19,8 +19,8 @@ module.exports = (config) => ({ accountId }) =>
         amountPayable: nP($('td', row).eq(4).text()),
         handlingOperation: {
           dividendOptionCode: $('td', row).eq(5).text(),
-          dividendOptionName: dividendOptionNameToDividendOptionCode[$('td', row).eq(5).text()]
-        },
+          dividendOptionName: dividendOptionNameToDividendOptionCode[$('td', row).eq(5).text() as DividendOption['dividendOptionName']]
+        } as unknown as Omit<DividendOption, 'accountId'>,
         cashRef: $('a', row).get(0).attribs.href.split('cashref=')[1].split('&')[0]
       }))
     })
