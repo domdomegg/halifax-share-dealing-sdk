@@ -1,12 +1,5 @@
 # halifax-share-dealing-sdk
 
-[![CI Status](https://github.com/domdomegg/halifax-share-dealing-sdk/workflows/CI/badge.svg)](https://github.com/domdomegg/halifax-share-dealing-sdk/actions?workflow=CI)
-[![CD Status](https://github.com/domdomegg/halifax-share-dealing-sdk/workflows/CD/badge.svg)](https://github.com/domdomegg/halifax-share-dealing-sdk/actions?workflow=CD)
-[![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/domdomegg/halifax-share-dealing-sdk/blob/master/LICENSE)
-[![NPM Package Version](https://img.shields.io/npm/v/halifax-share-dealing-sdk)](https://www.npmjs.com/package/halifax-share-dealing-sdk) 
-[![Bundle size](https://img.shields.io/bundlephobia/minzip/halifax-share-dealing-sdk?label=size)](https://bundlephobia.com/result?p=halifax-share-dealing-sdk@latest)
-
 Unofficial SDK for Halifax Share Dealing, IWeb Share Dealing, Bank of Scotland Share Dealing and The Lloyds Bank Direct Investments Service
 
 Scrapes internet banking, so may be broken by updates to their front end
