@@ -26,7 +26,7 @@ export type DividendOption = Accounty & (
   | { dividendOptionCode: 'H', dividendOptionName: 'Hold In Account' }
   | { dividendOptionCode: 'P', dividendOptionName: 'Pay Away Immediately' }
   | { dividendOptionCode: 'P6', dividendOptionName: 'Pay Away 6-Monthly' }
-)
+);
 
 export interface Statement {
   statementId: string,
