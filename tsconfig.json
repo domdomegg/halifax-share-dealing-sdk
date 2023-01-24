@@ -1,18 +1,9 @@
 {
-    "compilerOptions": {
-        "outDir": "dist",
-        "declaration": true,
-        "lib": [
-            "es2020"
-        ],
-        "module": "commonjs",
-        "target": "es2020",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
-    },
-    "include": [
-        "src/**/*.ts"
-    ]
+  "extends": "@tsconfig/node-lts-strictest/tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
 }

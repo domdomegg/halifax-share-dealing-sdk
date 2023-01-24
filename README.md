@@ -231,3 +231,32 @@ sd.login()
 - `accountId`: Equivalent to what I think Halifax call a `PortCode`. Usually the account code with potentially some letters after it. Accounts with different `accountId`s may share the same account code. I think these are unique across logins.
 - `statementId`: Statement id, I think it's an incrementing number starting at `1` - not unique across logins. Statements are attached to a login (as opposed to account), and `statementId`s are unique within a login.
 - `accounty object`: An object with an `accountId` property
+
+## Contributing
+
+Pull requests are welcomed on GitHub! To get started:
+
+1. Install Git and Node.js
+2. Clone the repository
+3. Install dependencies with `npm install`
+4. Run `npm run test` to run tests with Jest
+5. Build with `npm run build`
+
+A useful pre-commit hook (save as `.git/hooks/pre-commit`) to ensure the tests pass, the code is formatted correctly and you haven't accidentally left your personal details in is (change 000123456 to your account code or other personal data you want to search for):
+
+```sh
+#!/bin/sh
+npm run test && npm run lint && ! grep --exclude=pre-commit -r '000123456' .
+```
+
+Warning: It is still possible to commit your data if you stage it, delete it and then commit. Please be careful!
+
+## Releases
+
+Versions follow the [semantic versioning spec](https://semver.org/).
+
+To release:
+
+1. Use `npm version <major | minor | patch>` to bump the version
+2. Run `git push --follow-tags` to push with tags
+3. Wait for GitHub Actions to publish to the NPM registry.
