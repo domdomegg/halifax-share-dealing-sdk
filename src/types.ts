@@ -1,5 +1,5 @@
 export interface Config {
-  site: 'halifax' | 'iweb' | 'bos' | 'lloyds',
+  site: 'halifax' | 'scottishwidows' | 'iweb' | 'bos' | 'lloyds',
   USERNAME: string,
   PASSWORD: string,
   MEMORABLE_INFORMATION: {

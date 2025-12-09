@@ -1,6 +1,6 @@
 # halifax-share-dealing-sdk
 
-Unofficial SDK for Halifax Share Dealing, IWeb Share Dealing, Bank of Scotland Share Dealing and The Lloyds Bank Direct Investments Service
+Unofficial SDK for Halifax Share Dealing, Scottish Widows Share Dealing, IWeb Share Dealing, Bank of Scotland Share Dealing and The Lloyds Bank Direct Investments Service
 
 Scrapes internet banking, so may be broken by updates to their front end
 
@@ -14,7 +14,7 @@ import halifaxShareDealingSdk from 'halifax-share-dealing-sdk'
 // const halifaxShareDealingSdk = require('halifax-share-dealing-sdk').default
 
 const sd = halifaxShareDealingSdk({
-  site: 'halifax', // one of 'halifax', 'iweb', 'bos', 'lloyds'
+  site: 'halifax', // one of 'halifax', 'scottishwidows', 'iweb', 'bos', 'lloyds'
   USERNAME: 'username',
   PASSWORD: 'password',
   MEMORABLE_INFORMATION: {

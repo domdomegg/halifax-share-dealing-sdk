@@ -3,7 +3,7 @@ import cheerio from 'cheerio';
 
 const sharedAgent = superagent.agent();
 
-// FIXME: superagent 5 is missing type definitions, this is a rough approximation but not perfect
+// FIXME: superagent is missing good type definitions, this is a rough approximation but not perfect
 export default (url: string): Omit<superagent.SuperAgentRequest, 'then' | 'catch' | 'finally'> & Promise<Omit<superagent.Response, 'body'> & { body: { html: string, $: cheerio.Root } }> => sharedAgent
   .post(url)
   .set('cache-control', 'no-cache')
