@@ -1,26 +1,26 @@
-import type { ParsedNumber } from '../types';
+import type {ParsedNumber} from '../types';
 
 export default (valueAsText: string): ParsedNumber => {
-  const parsedText = valueAsText.replace(/[*,\s]/g, '').replace(/[£p%]/, '');
-  const symbol = valueAsText.match(/[£p%]/)?.[0] as '£' | 'p' | '%' | undefined;
+	const parsedText = valueAsText.replace(/[*,\s]/g, '').replace(/[£p%]/, '');
+	const symbol = (/[£p%]/.exec(valueAsText))?.[0] as '£' | 'p' | '%' | undefined;
 
-  if (!validParsedText(parsedText)) {
-    throw new Error(`Invalid numeric string: ${valueAsText}`);
-  }
+	if (!validParsedText(parsedText)) {
+		throw new Error(`Invalid numeric string: ${valueAsText}`);
+	}
 
-  if (!symbol) {
-    return {
-      asFloat: parseFloat(parsedText),
-      asText: parsedText,
-      asRawText: valueAsText.trim(),
-    };
-  }
+	if (!symbol) {
+		return {
+			asFloat: parseFloat(parsedText),
+			asText: parsedText,
+			asRawText: valueAsText.trim(),
+		};
+	}
 
-  return {
-    asFloat: parseFloat(valueAsText.includes('£') ? parsedText : divide100(parsedText)),
-    asText: symbol === '£' ? `${symbol}${parsedText}` : `${parsedText}${symbol}`,
-    asRawText: valueAsText.trim(),
-  };
+	return {
+		asFloat: parseFloat(valueAsText.includes('£') ? parsedText : divide100(parsedText)),
+		asText: symbol === '£' ? `${symbol}${parsedText}` : `${parsedText}${symbol}`,
+		asRawText: valueAsText.trim(),
+	};
 };
 
 const validParsedText = (str: string): boolean => /^-?\d+(\.\d+)?$/.test(str);
